@@ -1,0 +1,343 @@
+:root {
+    --background-color: #1b1b32;
+    --spacer: 2rem;
+    --shadow: #0c0c38;
+    --size: 0.75em;
+
+}
+
+*, *::before, *::after {
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+}
+
+/* Responsividade */
+
+@media screen and (max-width:768px) {
+
+    #name {
+        padding-left: none;
+        font-size: calc(3.5vw + 1.25rem);
+    }
+
+    .all {
+        flex-direction: column;
+    }
+
+    .all-tasks {
+        align-self: center;
+        overflow-wrap: anywhere;
+    }
+
+    .todo-list {
+        align-self: center;
+        margin: 10vh 5vw;
+        width: 90%;
+    }
+    .todo-body {
+        overflow-wrap: anywhere;
+    }
+    .new.task {
+        width: 100%;
+    }
+}
+
+
+body {
+    font-weight: 300;
+    font-size: 1.5rem;
+    background: var(--background-color);
+    color: #f3f3f3;
+}
+
+.header { 
+    display: flex;
+}
+
+.title, #name {
+    font-size: calc(4vw + 2rem);
+}
+
+.title {
+    width: max-content;
+    margin-left: 5vw;
+    text-align: left;
+    font-weight: 900;
+    color: rgba(228, 228, 288, 0.7);
+    letter-spacing: 2px;
+    text-shadow: 10px 10px 5px var(--shadow);
+}
+
+#name {
+    width: 80%;
+    text-align: left;
+    margin: 2rem 0;
+    padding: 0 1rem;
+    background: transparent;
+    outline: none;
+    border: none;
+}
+
+.all {
+    margin-top: 5vw;
+    display: flex;
+    justify-content: center;
+}
+
+.all-tasks {
+    padding: 1vw;
+    margin-right: 5vw;
+    height: fit-content;
+}
+
+.todo-list {   
+    background: #f3f3f3;
+    color: #333;
+    border-radius: 10px;
+    box-shadow:  10px 10px 5px var(--shadow);
+    width: 100%;
+    max-width: 70%;
+    height: fit-content;
+}
+
+.task-list-title {
+    text-shadow: 5px 5px 5px var(--shadow);
+}
+
+.task-list {
+    font-size: 1.2rem;
+    line-height: 1.7;
+    list-style: circle;
+    list-style-position: inside;
+    padding-left: 1.1em;
+}
+
+.list-name {
+    cursor: pointer;
+}
+
+.list-name:hover{
+    opacity: 0.7;
+}
+
+form {
+    display: flex;
+    justify-content: center;
+    flex-direction: row-reverse;
+}
+
+.btn {
+    cursor: pointer;
+    background: 0;
+    border: 0;
+    padding: 0;
+    color: inherit;
+}
+
+.btn.create {
+    font-size: 1.5rem;
+    font-weight: 900;
+    margin-right: 0.25em;
+    transition: opacity 250ms ease-in;
+}
+
+.btn.create:hover{
+    opacity: 0.7;
+}
+
+.btn.delete{
+    opacity: 0.7;
+    font-size: 1rem;
+    transition: color 200ms;
+}
+
+.btn.delete:hover{
+    color: rgb(99, 36, 36)
+}
+
+.new {
+    background: transparent;
+    border: 0;
+    color: inherit;
+    border-bottom: 1px solid currentColor;
+    font-size: inherit;
+    outline: none;
+    padding: 0.25em;
+    transition: border-bottom 150ms ease-in;
+    
+}
+
+.new::-webkit-input-placeholder {
+    opacity: 0.4;
+}
+  
+.new:-ms-input-placeholder {
+    opacity: 0.4;
+}
+  
+.new::-ms-input-placeholder {
+    opacity: 0.4;
+}
+  
+.new::placeholder {
+    opacity: 0.4;
+}
+  
+.new:focus {
+    border-bottom-width: 3px;
+}
+  
+.new:focus::-webkit-input-placeholder {
+    opacity: 0.15;
+}
+  
+.new:focus:-ms-input-placeholder {
+    opacity: 0.15;
+}
+  
+.new:focus::-ms-input-placeholder {
+    opacity: 0.15; 
+}
+  
+.new:focus::placeholder {
+    opacity: 0.15;
+}
+
+.new.list {
+    font-size: 1.1rem;
+}
+
+.new.task {
+    margin-bottom: 0;
+    overflow: auto;
+    width: 100%;
+    max-width: 70%;
+}
+
+.active-list {
+    font-weight: 700;
+}
+
+
+.todo-header {
+    padding: var(--spacer);
+    background: #e4e4e4;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 10px 10px 0 0;
+}
+
+.list-title {
+    margin: 0 1em 0 0;
+}
+
+.task-count {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.todo-body {
+    padding: var(--spacer);
+    position: relative;
+    overflow-wrap: anywhere;
+}
+
+.new-task-creator .create {
+    color: var(--background-color);
+}
+
+[type="checkbox"] {
+    opacity: 0;
+    position: absolute;
+}
+
+.task label {
+    display: inline-flex;
+    align-items: center;
+    position: relative;
+}
+
+.task {
+    position: relative;
+    margin-bottom: 1.25em;
+}
+
+.task::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: -0.5em;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.1;
+}
+
+.custom-checkbox {
+    min-width: 18px;
+    display: inline-block;
+    width: var(--size);
+    height: var(--size);
+    margin-right: var(--size);
+    cursor: pointer;
+    border: 2px solid currentColor;
+    border-radius: 50%;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    transition: -webkit-transform 300ms ease-in-out;
+    transition: transform 300ms ease-in-out;
+    transition: transform 300ms ease-in-out, -webkit-transform 300ms ease-in-out;
+}
+
+.task:hover .custom-checkbox,
+[type="checkbox"]:focus + label .custom-checkbox {
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+  color: var(--background-color);
+}
+
+[type="checkbox"]:checked + label .custom-checkbox {
+  background: var(--background-color);
+  border-color: var(--background-color);
+  box-shadow: inset 0 0 0px 2px #f3f3f3;
+}
+
+[type="checkbox"]:checked + label {
+  opacity: 0.5;
+}
+
+.task label::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  left: 1.5em;
+  top: 50%;
+  height: 3px;
+  background: currentColor;
+  -webkit-transform: scaleX(0);
+          transform: scaleX(0);
+  -webkit-transform-origin: right;
+          transform-origin: right;
+  transition: -webkit-transform 150ms ease-in-out;
+  transition: transform 150ms ease-in-out;
+  transition: transform 150ms ease-in-out, -webkit-transform 150ms ease-in-out;
+}
+
+[type="checkbox"]:checked + label::after {
+  -webkit-transform: scaleX(1);
+          transform: scaleX(1);
+  -webkit-transform-origin: left;
+          transform-origin: left;
+}
+
+.delete-stuff {
+    display: flex;
+    justify-content: space-around;
+    position: absolute;
+    width: 100%;
+    max-width: 70%;
+    color: #f3f3f3;
+    padding: 1.2vw 1vw;
+}
